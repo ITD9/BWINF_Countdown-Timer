@@ -1,0 +1,54 @@
+<!-- 
+Made by ITD
+BWINF Bomb Timer Script
+This script creates a countdown timer for the BWINF competition deadline.
+It includes visual effects for the bomb and an explosion effect when the deadline is reached.
+
+This is not an official BWINF script.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWINF Bomb Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="https://bwinf.de/_assets/51da559d81e26dd99a16662ed6f306af/Images/Logo-BWINF-Footer.svg" alt="BWINF Logo" id="bwinf-logo">
+    </header>
+    <main>
+        <h1>BWINF Wettbewerb - Runde 2 Deadline</h1>
+        <div id="timer-container">
+            <div id="bomb-visual">
+                <!-- Placeholder for bomb visual -->
+                <img src="bomb_placeholder.png" alt="Bomb" id="bomb-image">
+            </div>
+            <div id="countdown">
+                <div id="time-left">Lädt...</div>
+                <div id="deadline-info">Abgabe: Dienstag, 29. April 2025, 00:00 Uhr (CEST)</div>
+            </div>
+        </div>
+        <div id="explosion-effect" style="display: none;">
+            <!-- Placeholder for explosion effect -->
+            <h2>BOOM!</h2>
+            <p>Die Abgabefrist ist vorbei!</p>
+        </div>
+        <div id="info-text">
+            <p id="hinweistext">Guten Tag,<br>
+der Bearbeitungszeitraum für die 2. Runde des 43. Bundeswettbewerb Informatik endet offiziell Dienstag, 29. April 2025 00:00 Uhr.<br>
+            Eventuell wird die Abgabe allerdings erst später am frühen Morgen des 29. April 2025 geschlossen, <strong>MAN SOLLTE SICH NICHT DARAUF VERLASSEN!</strong> Letztes Jahr wurde die Abgabe zum Beispiel fast pünktlich um Mitternacht geschlossen!<br>
+            Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>
+        </div>
+    </main>
+    <footer>
+        <img src="https://bwinf.de/_assets/51da559d81e26dd99a16662ed6f306af/Images/buehne-fs-logo-bwinf.png" alt="BWINF Keyvisual" id="bwinf-keyvisual">
+        <p class="attribution">Logos & Keyvisual: Bundesweite Informatikwettbewerbe</p>
+        <p class="attribution">Dies ist keine offizielle Seite von Bundesweite Informatikwettbewerbe</p>
+        <p class="attribution">Developed by ITD</p>
+        <p class="attribution">Alle Angaben ohne Gewähr.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
