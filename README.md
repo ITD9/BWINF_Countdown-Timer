@@ -1,4 +1,4 @@
-**BWINF-Abgabe Bomb Timer**
+**BWINF-Abgabe Countdown Timer**
 
 Website zum anzeigen der Restzeit bis zur Abgabe des BwInf (bwinf.de/bundeswettbewerb). Entstanden durch die BWINF-Discord Community.
 
