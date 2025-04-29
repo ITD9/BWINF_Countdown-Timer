@@ -131,7 +131,7 @@ function createExplosionParticles() {
 }
 
 function updateText() {
-    //Update hiwneistext
+    //Update hinweistext
     const hinweistext_Area = document.getElementById("hinweistext");
     hinweistext_Area.innerHTML = new_hinweistext;
     hinweistext_Area.style.height = "auto";
