@@ -136,7 +136,6 @@ function updateText() {
     const hinweistext_Area = document.getElementById("hinweistext");
     hinweistext_Area.innerHTML = new_hinweistext;
     hinweistext_Area.style.height = "auto";
-    hinweistext_Area.style.height = `${hinweistext_Area.scrollHeight}px`;
 
     //Update deadline_info
     const deadlineInfo_Area = document.getElementById("deadline-info");
@@ -148,7 +147,6 @@ function updateText() {
     const titleArea = document.getElementById("Ueberschrift");
     titleArea.innerHTML = new_Ueberschrift;
     titleArea.style.height = "auto";
-    titleArea.style.height = `${titleArea.scrollHeight}px`;
 }
 
 updateText();
