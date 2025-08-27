@@ -7,20 +7,21 @@
 
 // -----------------------
 // Anpassen für neue Daten:
-// Set the deadline date (Hier: April 29, 2025, 00:00 CEST)
-const deadline = new Date("2025-04-29T00:00:00+02:00").getTime();
+// Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
+const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
 
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_hinweistext = "Guten Tag,<br>der Bearbeitungszeitraum für die 2. Runde des 43. Bundeswettbewerb Informatik endet offiziell Dienstag, \
-29. April 2025 00:00 Uhr.<br>Eventuell wird die Abgabe allerdings erst später am frühen Morgen des 29. April 2025 geschlossen, <strong>MAN SOLLTE \
+const new_hinweistext = "Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, \
+18. November 2025 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag nicht<br>Jedoch wird eventuell die Abgabe erst später \
+am frühen Morgen des 18. November 2025 geschlossen, <strong>MAN SOLLTE \
 SICH NICHT DARAUF VERLASSEN!</strong> Letztes Jahr wurde die Abgabe zum Beispiel fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter \
 <a href=\"https://login.bwinf.de/\" target=\"_blank\">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>"
 
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = "Abgabe: Dienstag, 29. April 2025, 00:00 Uhr (CEST)";
+const new_deadlineInfo = "Abgabe: Dienstag, 18. November 2025, 00:00 Uhr (CEST)";
 
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
-const new_Ueberschrift = "BWINF Wettbewerb - Runde 2 Deadline";
+const new_Ueberschrift = "44. Bundeswettbewerb Informatik - Runde 1 Deadline";
 
 //----------------------
 // DOM elements
