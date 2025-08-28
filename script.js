@@ -141,7 +141,6 @@ function updateText() {
     const deadlineInfo_Area = document.getElementById("deadline-info");
     deadlineInfo_Area.innerHTML = new_deadlineInfo;
     deadlineInfo_Area.style.height = "auto";
-    deadlineInfo_Area.style.height = `${deadlineInfo_Area.scrollHeight}px`;
 
     // Update title
     const titleArea = document.getElementById("Ueberschrift");
