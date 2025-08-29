@@ -1,0 +1,20 @@
+{
+  "name": "BWINF Bomb Timer",
+  "short_name": "BWINF Bomb Timer",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f39200",
+  "icons": [
+    {
+      "src": "media\\bomb1_192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "media\\bomb1_512-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -13,6 +13,15 @@ This is not an official BWINF script.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BWINF Bomb Timer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#f39200">
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+            .then(() => console.log("Service Worker registriert"))
+            .catch(err => console.error("SW Fehler:", err));
+        }
+</script>
 </head>
 <body>
     <header>
@@ -24,7 +33,7 @@ This is not an official BWINF script.
         <div id="timer-container">
             <div id="bomb-visual">
                 <!-- Placeholder for bomb visual -->
-                <img src="bomb1.svg" alt="Bomb" id="bomb-image">
+                <img src="media\bomb1.svg" alt="Bomb" id="bomb-image">
             </div>
             <div id="countdown">
                 <div id="time-left">Lädt...</div>
