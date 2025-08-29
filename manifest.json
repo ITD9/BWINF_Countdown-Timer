@@ -1,18 +1,18 @@
 {
   "name": "BWINF Bomb Timer",
   "short_name": "BWINF Bomb Timer",
-  "start_url": "/index.html",
+  "start_url": "https://itd9.github.io/BWINF_Countdown-Timer/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#f39200",
   "icons": [
     {
-      "src": "media\\bomb1_192-192.png",
+      "src": "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_192-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "media\\bomb1_512-512.png",
+      "src": "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -23,7 +23,7 @@
       "name": "BWINF Bomb Timer Widget",
       "description": "Countdown zur Abgabe direkt auf dem Homescreen",
       "id": "bomb_widget",
-      "src": "/widget.html",
+      "src": "https://itd9.github.io/BWINF_Countdown-Timer/widget.html",
       "type": "text/html",
       "sizes": ["4x2"]
     }
