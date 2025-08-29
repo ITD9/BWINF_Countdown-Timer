@@ -13,11 +13,11 @@ This is not an official BWINF script.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BWINF Bomb Timer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/repo/manifest.json">
     <meta name="theme-color" content="#f39200">
     <script>
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/service-worker.js")
+            navigator.serviceWorker.register("/repo/service-worker.js")
             .then(() => console.log("Service Worker registriert"))
             .catch(err => console.error("SW Fehler:", err));
         }
