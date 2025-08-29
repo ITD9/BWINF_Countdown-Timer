@@ -13,10 +13,27 @@ This is not an official BWINF script.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BWINF Bomb Timer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#f39200">
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+            .then(() => console.log("Service Worker registriert"))
+            .catch(err => console.error("SW Fehler:", err));
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
         <img src="https://bwinf.de/_assets/51da559d81e26dd99a16662ed6f306af/Images/Logo-BWINF-Footer.svg" alt="BWINF Logo" id="bwinf-logo">
+        <button id="view_new_features" hidden>Neu</button>
+        <span id="new_features" hidden>
+            <button id="installBtn">App installieren</button>          
+        </span>
     </header>
     <main>
         <!-- Text bitte nicht hier ändern, sondern in script.js-->
@@ -24,7 +41,7 @@ This is not an official BWINF script.
         <div id="timer-container">
             <div id="bomb-visual">
                 <!-- Placeholder for bomb visual -->
-                <img src="bomb1.svg" alt="Bomb" id="bomb-image">
+                <img src="media\bomb1.svg" alt="Bomb" id="bomb-image">
             </div>
             <div id="countdown">
                 <div id="time-left">Lädt...</div>
