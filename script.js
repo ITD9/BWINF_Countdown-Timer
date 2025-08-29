@@ -131,6 +131,45 @@ function createExplosionParticles() {
     }
 }
 
+// --------- PWA abfangen & Installationsdialog ----------------
+
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+const new_feature_area = document.getElementById("new_features");
+const view_new_features = document.getElementById("view_new_features");
+let isPWAavailable = false;
+
+console.log(new_feature_area, installBtn);
+  // Abfangen, wenn die PWA installierbar ist
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault(); // Browser-Standard verhindern
+    deferredPrompt = e; // Event speichern
+    isPWAavailable = true; // PWA ist verfügbar
+    view_new_features.hidden = false; // "Neu" Button anzeigen
+  });
+
+view_new_features.addEventListener("click", async () => {
+    if (isPWAavailable) { // Wenn PWA verfügbar ist
+        new_feature_area.hidden = false; // Installationsarea anzeigen
+        view_new_features.hidden = true; // "Neu" Button ausblenden
+    }
+});
+
+  // Klick auf Installationsbutton
+installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt(); // Installationsdialog anzeigen
+
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User wählte: ${outcome}`);
+
+    deferredPrompt = null; // Zurücksetzen
+    new_feature_area.hidden = true; // Area wieder verstecken
+  });
+
+// ------------------ Text aktualisieren --------------------
+
 function updateText() {
     //Update hinweistext
     const hinweistext_Area = document.getElementById("hinweistext");
@@ -149,3 +188,6 @@ function updateText() {
 }
 
 updateText();
+
+
+

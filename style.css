@@ -13,7 +13,9 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
     background: linear-gradient(135deg, var(--bwinf-light) 0%, #e0e0e0 100%);
     color: var(--bwinf-dark);
     min-height: 100vh;
@@ -134,6 +136,12 @@ h1 {
     margin-top: 2rem;
     width: 100%;
     max-width: 800px;
+
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 #info-text p {
@@ -155,6 +163,12 @@ footer {
     padding: 1rem;
     text-align: center;
     margin-top: auto;
+
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 #bwinf-keyvisual {
@@ -243,4 +257,66 @@ footer {
 
 a {
     color: white
+}
+
+#installBtn {
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    color: white;
+    transition: transform 0.3s ease-in-out, background-color .15s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 0.8rem;
+}
+
+#installBtn:hover {
+    background-color: rgb(192, 1, 1);
+    transform: scale(1.03);
+}
+
+#new_features {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1.5px solid red;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+    padding-left: 1rem;
+    padding-right: 0.8rem;
+    border-radius: 5px;
+    background-color: rgba(255, 87, 87, 0.253);
+}
+
+#new_features::before {
+    content: "Neu: PWA";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#view_new_features {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1.5px solid red;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+    padding-left: 1rem;
+    padding-right: 0.8rem;
+    border-radius: 5px;
+    background-color: rgba(255, 87, 87, 0.253);
+    color: white;
+    transition: transform 0.3s ease-in-out, background-color .15s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+#view_new_features:hover {
+    transform: scale(1.1);
 }
