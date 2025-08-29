@@ -9,7 +9,8 @@ self.addEventListener("install", event => {
         "media/bomb1_512-512.png",
         "/script.js",
         "/style.css",
-        "media/bomb1.svg"
+        "media/bomb1.svg",
+        "/widget.html"
       ]);
     })
   );

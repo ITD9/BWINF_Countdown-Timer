@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Widget</title>
+    <style>
+        :root {
+            --bwinf-orange: #f39200;
+            --bwinf-yellow: #ffcc00;
+        }
+        body {
+        margin: 0;
+        font-family: "Share Tech Mono", monospace;
+        font-weight: 400;
+        font-style: normal;
+        background: linear-gradient(135deg, var(--bwinf-orange) 0%, var(--bwinf-yellow) 100%);
+        color: white;
+        padding: 8px;
+        text-align: center;
+        }
+
+        #countdown {
+            width: 100%;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h3>1. Runde Abgabe</h3>
+    <div id="countdown">
+        <div id="time-left">Lädt...</div>
+    </div>
+
+    <script>
+    const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
+    const timeLeftElement = document.getElementById("time-left");
+    const countdownTimer = setInterval(updateCountdown, 1000);
+    
+    function updateCountdown() {
+        // Get current date and time
+        const now = new Date().getTime();
+        
+        // Find the distance between now and the deadline
+        const distance = deadline - now;
+        
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        console.log(`${days}d ${hours}h ${minutes}m ${seconds}s left`);
+        // Display the result
+        timeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        
+        // If the countdown is over, show explosion effect
+        if (distance < 0) {
+            clearInterval(countdownTimer);
+            timeLeftElement.innerHTML = "ABGELAUFEN!";
+        }
+    }
+    updateCountdown();
+  </script>
+</body>
+
+</html>

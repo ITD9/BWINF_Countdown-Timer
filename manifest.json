@@ -16,5 +16,16 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+
+  "widgets": [
+    {
+      "name": "BWINF Bomb Timer Widget",
+      "description": "Countdown zur Abgabe direkt auf dem Homescreen",
+      "id": "bomb_widget",
+      "src": "/widget.html",
+      "type": "text/html",
+      "sizes": ["4x2"]
+    }
   ]
 }
