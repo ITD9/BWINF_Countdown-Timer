@@ -43,6 +43,7 @@ function updateCountdown() {
     
     // Find the distance between now and the deadline
     const distance = deadline - now;
+    globalThis.distance = distance;
     
     // Time calculations for days, hours, minutes and seconds
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -72,6 +73,54 @@ function updateCountdown() {
     }
 }
 
+// planThePush Notification & get Permission
+function planPush() {
+    Notification.requestPermission().then(permission => {
+        if (Notification.permission === "granted" && distance > -1000) {
+            // Benachrichtigung bei Ablauf
+            setTimeout(() => {
+                new Notification("Die Abgabe ist abgelaufen!", {
+                    body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik ist abgelaufen.",
+                    icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/realistic_explosion_v1.png"
+                }
+            );
+            }, distance);
+            
+            if (distance - 86400 > -60) {
+                // Benachrichtigung 24 Stunden vorher
+                setTimeout(() => {
+                    new Notification("Nur noch 24h!", {
+                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 24h.",
+                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
+                    }
+                );
+                }, distance - 86400);
+            }
+
+            if (distance - 3600 > -60) {
+                // Benachrichtigung eine Stunden vorher
+                setTimeout(() => {
+                    new Notification("Nur noch eine Stunde!", {
+                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
+                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
+                    }
+                );
+                }, distance - 3600);
+            }
+            
+            if (distance - 600 > -600) {
+                // Benachrichtigung zehn Minuten vorher
+                setTimeout(() => {
+                    new Notification("Nur noch 10 Minuten!", {
+                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 10 Minuten.",
+                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
+                    }
+                );
+                }, distance - 600);
+            }
+        }
+    });
+}
 // Function to trigger the explosion effect
 function triggerExplosion() {
     // Animate the bomb before explosion
@@ -88,7 +137,7 @@ function triggerExplosion() {
 
 // Function to create explosion particles
 function createExplosionParticles() {
-    const particleCount = 50;
+    const particleCount = 300;
     const colors = ["#f39200", "#ffcc00", "#ff4500", "#ff0000"];
     
     for (let i = 0; i < particleCount; i++) {
@@ -105,8 +154,8 @@ function createExplosionParticles() {
         
         // Random direction and distance
         const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 100 + 50;
-        const duration = Math.random() * 2 + 1;
+        const distance = Math.random() * 700 + 50;
+        const duration = Math.random() * 4 + 1;
         
         // Animation
         particle.animate([
@@ -137,25 +186,36 @@ let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 const new_feature_area = document.getElementById("new_features");
 const view_new_features = document.getElementById("view_new_features");
+const activatePushBtn = document.getElementById("activatePushBtn");
+
 let isPWAavailable = false;
+let showPWABtn = false;
+let showPushBtn = true;
+let showFeatureArea = false;
+updateFeatureArea();
+
+if (Notification.permission === "granted") {
+    showPushBtn = false;
+    updateFeatureArea();
+}
 
 console.log(new_feature_area, installBtn);
-  // Abfangen, wenn die PWA installierbar ist
+// Abfangen, wenn die PWA installierbar ist
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault(); // Browser-Standard verhindern
     deferredPrompt = e; // Event speichern
     isPWAavailable = true; // PWA ist verfügbar
-    view_new_features.hidden = false; // "Neu" Button anzeigen
+    showPWABtn = true;
+    updateFeatureArea();
   });
 
-view_new_features.addEventListener("click", async () => {
-    if (isPWAavailable) { // Wenn PWA verfügbar ist
-        new_feature_area.hidden = false; // Installationsarea anzeigen
-        view_new_features.hidden = true; // "Neu" Button ausblenden
-    }
+// Klick auf "Neu" Button
+view_new_features.addEventListener("click", () => {
+    showFeatureArea = true; // Area soll jetzt angezeigt werden
+    updateFeatureArea();
 });
 
-  // Klick auf Installationsbutton
+// Klick auf Installationsbutton
 installBtn.addEventListener("click", async () => {
     if (!deferredPrompt) return;
 
@@ -165,8 +225,45 @@ installBtn.addEventListener("click", async () => {
     console.log(`User wählte: ${outcome}`);
 
     deferredPrompt = null; // Zurücksetzen
-    new_feature_area.hidden = true; // Area wieder verstecken
+    showPWABtn = false;
+    updateFeatureArea();
   });
+
+// Klick auf Push-Button
+activatePushBtn.addEventListener("click", async () => {
+    planPush();
+    showPushBtn = false;
+    updateFeatureArea();
+})
+
+// NewFeatureArea Updaten
+function updateFeatureArea() {
+    // Feature-Area anzeigen, wenn es noch Buttons gibt
+    const shouldShowArea = showPWABtn || showPushBtn;
+
+    if (!shouldShowArea) {
+        showFeatureArea = false;
+        view_new_features.hidden = true;
+    }
+    // Feature-Area wird nur angezeigt, wenn showFeatureArea true ist
+    if (showFeatureArea) {
+        new_feature_area.hidden = false;
+
+        // Buttons innerhalb der Area anzeigen/ausblenden
+        installBtn.hidden = !showPWABtn;
+        activatePushBtn.hidden = !showPushBtn;
+
+        // "View New Features" Button ausblenden
+        view_new_features.hidden = true;
+    } else {
+        // Feature-Area ausblenden
+        new_feature_area.hidden = true;
+
+        // "View New Features" Button nur anzeigen, wenn es noch Features gibt
+        view_new_features.hidden = !(showPWABtn || showPushBtn);
+    
+    }
+}
 
 // ------------------ Text aktualisieren --------------------
 
@@ -188,6 +285,3 @@ function updateText() {
 }
 
 updateText();
-
-
-
