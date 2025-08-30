@@ -259,7 +259,7 @@ a {
     color: white
 }
 
-#installBtn {
+.NewFeatureBtn {
     background-color: red;
     border: 1px solid red;
     border-radius: 20px;
@@ -270,7 +270,7 @@ a {
     margin-top: 0.8rem;
 }
 
-#installBtn:hover {
+.NewFeatureBtn:hover {
     background-color: rgb(192, 1, 1);
     transform: scale(1.03);
 }
@@ -286,10 +286,11 @@ a {
     padding-right: 0.8rem;
     border-radius: 5px;
     background-color: rgba(255, 87, 87, 0.253);
+    margin-left: 10px;
 }
 
 #new_features::before {
-    content: "Neu: PWA";
+    content: "Neu: PWA & Push";
     position: absolute;
     top: -10px;
     left: 10px;
