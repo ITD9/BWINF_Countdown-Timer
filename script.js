@@ -76,17 +76,21 @@ function updateCountdown() {
 // planThePush Notification & get Permission
 function planPush() {
     Notification.requestPermission().then(permission => {
+        // Calculate the current distance to the deadline
+        const now = new Date().getTime();
+        const distance = deadline - now;
+
         if (Notification.permission === "granted" && distance > -1000) {
             // Benachrichtigung bei Ablauf
             setTimeout(() => {
                 new Notification("Die Abgabe ist abgelaufen!", {
-                    body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik ist abgelaufen.",
+                    body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik ist jetzt geschlossen.",
                     icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/realistic_explosion_v1.png"
                 }
             );
             }, distance);
-            
-            if (distance - 86400 > -60) {
+
+            if (distance - 86400000 > -60000) {
                 // Benachrichtigung 24 Stunden vorher
                 setTimeout(() => {
                     new Notification("Nur noch 24h!", {
@@ -94,21 +98,21 @@ function planPush() {
                         icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
                     }
                 );
-                }, distance - 86400);
+                }, distance - 86400000);
             }
 
-            if (distance - 3600 > -60) {
-                // Benachrichtigung eine Stunden vorher
+            if (distance - 3600000 > -60000) {
+                // Benachrichtigung eine Stunde vorher
                 setTimeout(() => {
                     new Notification("Nur noch eine Stunde!", {
                         body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
                         icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
                     }
                 );
-                }, distance - 3600);
+                }, distance - 3600000);
             }
-            
-            if (distance - 600 > -600) {
+
+            if (distance - 600000 > -600000) {
                 // Benachrichtigung zehn Minuten vorher
                 setTimeout(() => {
                     new Notification("Nur noch 10 Minuten!", {
@@ -116,7 +120,7 @@ function planPush() {
                         icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
                     }
                 );
-                }, distance - 600);
+                }, distance - 600000);
             }
         }
     });
