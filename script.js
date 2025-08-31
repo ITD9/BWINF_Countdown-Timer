@@ -330,7 +330,7 @@ function activateRealeaseCountdown() {
     }
 }
 
-
+/*
 updateText();
 activateRealeaseCountdown();
 updateCountdown();
@@ -339,4 +339,10 @@ document.addEventListener("DOMContentLoaded", () => {
     updateText();
     activateRealeaseCountdown();
     updateCountdown();
-});
+});*/
+
+window.onload = () => {
+    updateText();
+    activateRealeaseCountdown();
+    updateCountdown();
+};

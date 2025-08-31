@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Share Tech Mono", monospace, sans-serif;
     font-weight: 400;
     font-style: normal;
     background: linear-gradient(135deg, var(--bwinf-light) 0%, #e0e0e0 100%);
