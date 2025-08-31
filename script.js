@@ -14,17 +14,17 @@ const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
 const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
 
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_hinweistext = "Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, \
+const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, \
 18. November 2025 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Jedoch wird eventuell die Abgabe erst später \
 am frühen Morgen des 18. November 2025 geschlossen, <strong>MAN SOLLTE \
 SICH NICHT DARAUF VERLASSEN!</strong> Vor zwei Jahren wurde die Abgabe zum Beispiel fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter \
-<a href=\"https://login.bwinf.de/\" target=\"_blank\">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>"
+<a href=\"https://login.bwinf.de/\" target=\"_blank\">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
 
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = "Abgabe: Dienstag, 18. November 2025, 00:00 Uhr (CEST)";
+const new_deadlineInfo = `Abgabe am Dienstag, 18. November 2025, 00:00 Uhr (CEST)`;
 
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
-const new_Ueberschrift = "44. Bundeswettbewerb Informatik - Runde 1 Deadline";
+const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 1 Deadline`;
 
 //----------------------
 // DOM elements
@@ -38,10 +38,6 @@ const realeaseTimeLeftElement = document.getElementById("realease_countdown");
 const countdownTimer = setInterval(updateCountdown, 1000);
 const realeaseCountdownTimer = setInterval(updateRealeaseCountdown, 1000);
 const updateRealeaseCountdownTimer = setInterval(activateRealeaseCountdown, 1000); 
-
-// Initial call to set the countdown immediately
-updateCountdown();
-
 
 // Function to update the countdown
 function updateCountdown() {
@@ -294,9 +290,7 @@ function updateText() {
     titleArea.style.height = "auto";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    updateText();
-});
+
 
 // If permission already granted, plan notifications
 if (Notification.permission === "granted") {
@@ -336,4 +330,13 @@ function activateRealeaseCountdown() {
     }
 }
 
+
+updateText();
 activateRealeaseCountdown();
+updateCountdown();
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateText();
+    activateRealeaseCountdown();
+    updateCountdown();
+});
