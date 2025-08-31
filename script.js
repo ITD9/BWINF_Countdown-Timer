@@ -294,7 +294,9 @@ function updateText() {
     titleArea.style.height = "auto";
 }
 
-updateText();
+document.addEventListener("DOMContentLoaded", () => {
+    updateText();
+});
 
 // If permission already granted, plan notifications
 if (Notification.permission === "granted") {
