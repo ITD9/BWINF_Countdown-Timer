@@ -321,3 +321,27 @@ a {
 #view_new_features:hover {
     transform: scale(1.1);
 }
+
+#time_to_realease {
+    text-align: center;
+    background: linear-gradient(135deg, red 0%, blue
+     100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 500px;
+    color: white
+}
+
+.realease_content {
+    margin: 0.4rem 0;
+}
+
+#realease_countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.5rem;
+}

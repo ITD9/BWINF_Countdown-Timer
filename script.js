@@ -10,6 +10,9 @@
 // Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
 const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
 
+//Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
+const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
+
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
 const new_hinweistext = "Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, \
 18. November 2025 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Jedoch wird eventuell die Abgabe erst später \
@@ -29,12 +32,16 @@ const timeLeftElement = document.getElementById("time-left");
 const bombVisual = document.getElementById("bomb-visual");
 const bombImage = document.getElementById("bomb-image");
 const explosionEffect = document.getElementById("explosion-effect");
+const realeaseTimeLeftElement = document.getElementById("realease_countdown");
 
 // Update the countdown every second
 const countdownTimer = setInterval(updateCountdown, 1000);
+const realeaseCountdownTimer = setInterval(updateRealeaseCountdown, 1000);
+const updateRealeaseCountdownTimer = setInterval(activateRealeaseCountdown, 1000); 
 
 // Initial call to set the countdown immediately
 updateCountdown();
+
 
 // Function to update the countdown
 function updateCountdown() {
@@ -73,58 +80,57 @@ function updateCountdown() {
     }
 }
 
-// planThePush Notification & get Permission
+
 function planPush() {
     Notification.requestPermission().then(permission => {
-        // Calculate the current distance to the deadline
-        const now = new Date().getTime();
-        const distance = deadline - now;
+        if (permission !== "granted") return;
 
-        if (Notification.permission === "granted" && distance > -1000) {
-            // Benachrichtigung bei Ablauf
-            setTimeout(() => {
-                new Notification("Die Abgabe ist abgelaufen!", {
-                    body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik ist jetzt geschlossen.",
-                    icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/realistic_explosion_v1.png"
-                }
-            );
-            }, distance);
-
-            if (distance - 86400000 > -60000) {
-                // Benachrichtigung 24 Stunden vorher
-                setTimeout(() => {
-                    new Notification("Nur noch 24h!", {
-                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 24h.",
-                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
-                    }
-                );
-                }, distance - 86400000);
+        const now = Date.now();
+        const events = [
+            {
+                time: deadline,
+                title: "Die Abgabe ist abgelaufen!",
+                body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik ist jetzt geschlossen.",
+                icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/biber_standing_alpha.png",
+                done: false
+            },
+            {
+                time: deadline - 86400000,
+                title: "Nur noch 24h!",
+                body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 24h.",
+                icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
+                done: false
+            },
+            {
+                time: deadline - 3600000,
+                title: "Nur noch eine Stunde!",
+                body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
+                icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
+                done: false
+            },
+            {
+                time: deadline - 600000,
+                title: "Nur noch 10 Minuten!",
+                body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 10 Minuten.",
+                icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
+                done: false
             }
+        ];
 
-            if (distance - 3600000 > -60000) {
-                // Benachrichtigung eine Stunde vorher
+        events.forEach(event => {
+            const delay = event.time - now;
+            if (delay > -60000 && !event.done && delay < 864000000) { // Only schedule if not already passed && event in less than 10 days because of 32-bit limit && event not already done
                 setTimeout(() => {
-                    new Notification("Nur noch eine Stunde!", {
-                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
-                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
-                    }
-                );
-                }, distance - 3600000);
+                    new Notification(event.title, {
+                        body: event.body,
+                        icon: event.icon
+                    });
+                }, Math.max(0, delay));
             }
-
-            if (distance - 600000 > -600000) {
-                // Benachrichtigung zehn Minuten vorher
-                setTimeout(() => {
-                    new Notification("Nur noch 10 Minuten!", {
-                        body: "Die Abgabe für die 1. Runde des 44. Bundeswettbewerb Informatik schließt in 10 Minuten.",
-                        icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png"
-                    }
-                );
-                }, distance - 600000);
-            }
-        }
+        });
     });
 }
+
 // Function to trigger the explosion effect
 function triggerExplosion() {
     // Animate the bomb before explosion
@@ -289,3 +295,43 @@ function updateText() {
 }
 
 updateText();
+
+// If permission already granted, plan notifications
+if (Notification.permission === "granted") {
+    planPush();
+}
+
+
+
+function updateRealeaseCountdown() {
+    // Get current date and time
+    const now = new Date().getTime();
+    
+    // Find the distance between now and the deadline
+    const distance = realeaseDeadline - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Display the result
+    realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// Function to activate/deactivate realease countdown field
+function activateRealeaseCountdown() {
+    if (Date.now() > realeaseDeadline && Date.now() < realeaseDeadline + 60000) { // Between realease time and 1 minute after
+        document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
+        clearInterval(realeaseCountdownTimer);
+    } else if (Date.now() > realeaseDeadline + 60000) { // More than 1 minute after realease
+        document.getElementById("time_to_realease").hidden = true;
+        clearInterval(updateRealeaseCountdownTimer);
+    } else { // Before realease
+        document.getElementById("time_to_realease").hidden = false;
+        updateRealeaseCountdown()
+    }
+}
+
+activateRealeaseCountdown();
