@@ -13,12 +13,15 @@ const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
 //Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
 const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
 
+// wg. mobile IOS auch in index.html anpassen!
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
 const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, 18. November 2025 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Jedoch wird eventuell die Abgabe erst später am frühen Morgen des 18. November 2025 geschlossen, <strong>MAN SOLLTE SICH NICHT DARAUF VERLASSEN!</strong> Vor zwei Jahren wurde die Abgabe zum Beispiel fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
 
+// wg. mobile IOS auch in index.html anpassen!
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
 const new_deadlineInfo = `Abgabe am Dienstag, 18. November 2025, 00:00 Uhr (CEST)`;
 
+// wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
 const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 1 Deadline`;
 
