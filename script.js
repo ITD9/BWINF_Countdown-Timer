@@ -186,87 +186,88 @@ function createExplosionParticles() {
 }
 
 // --------- PWA abfangen & Installationsdialog ----------------
+function featureZone() {
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
+    const new_feature_area = document.getElementById("new_features");
+    const view_new_features = document.getElementById("view_new_features");
+    const activatePushBtn = document.getElementById("activatePushBtn");
 
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-const new_feature_area = document.getElementById("new_features");
-const view_new_features = document.getElementById("view_new_features");
-const activatePushBtn = document.getElementById("activatePushBtn");
-
-let isPWAavailable = false;
-let showPWABtn = false;
-let showPushBtn = true;
-let showFeatureArea = false;
-updateFeatureArea();
-
-if (Notification.permission === "granted") {
-    showPushBtn = false;
+    let isPWAavailable = false;
+    let showPWABtn = false;
+    let showPushBtn = true;
+    let showFeatureArea = false;
     updateFeatureArea();
-}
 
-console.log(new_feature_area, installBtn);
-// Abfangen, wenn die PWA installierbar ist
-window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault(); // Browser-Standard verhindern
-    deferredPrompt = e; // Event speichern
-    isPWAavailable = true; // PWA ist verfügbar
-    showPWABtn = true;
-    updateFeatureArea();
-  });
-
-// Klick auf "Neu" Button
-view_new_features.addEventListener("click", () => {
-    showFeatureArea = true; // Area soll jetzt angezeigt werden
-    updateFeatureArea();
-});
-
-// Klick auf Installationsbutton
-installBtn.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt(); // Installationsdialog anzeigen
-
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User wählte: ${outcome}`);
-
-    deferredPrompt = null; // Zurücksetzen
-    showPWABtn = false;
-    updateFeatureArea();
-  });
-
-// Klick auf Push-Button
-activatePushBtn.addEventListener("click", async () => {
-    planPush();
-    showPushBtn = false;
-    updateFeatureArea();
-})
-
-// NewFeatureArea Updaten
-function updateFeatureArea() {
-    // Feature-Area anzeigen, wenn es noch Buttons gibt
-    const shouldShowArea = showPWABtn || showPushBtn;
-
-    if (!shouldShowArea) {
-        showFeatureArea = false;
-        view_new_features.hidden = true;
+    if (Notification.permission === "granted") {
+        showPushBtn = false;
+        updateFeatureArea();
     }
-    // Feature-Area wird nur angezeigt, wenn showFeatureArea true ist
-    if (showFeatureArea) {
-        new_feature_area.hidden = false;
 
-        // Buttons innerhalb der Area anzeigen/ausblenden
-        installBtn.hidden = !showPWABtn;
-        activatePushBtn.hidden = !showPushBtn;
+    console.log(new_feature_area, installBtn);
+    // Abfangen, wenn die PWA installierbar ist
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault(); // Browser-Standard verhindern
+        deferredPrompt = e; // Event speichern
+        isPWAavailable = true; // PWA ist verfügbar
+        showPWABtn = true;
+        updateFeatureArea();
+    });
 
-        // "View New Features" Button ausblenden
-        view_new_features.hidden = true;
-    } else {
-        // Feature-Area ausblenden
-        new_feature_area.hidden = true;
+    // Klick auf "Neu" Button
+    view_new_features.addEventListener("click", () => {
+        showFeatureArea = true; // Area soll jetzt angezeigt werden
+        updateFeatureArea();
+    });
 
-        // "View New Features" Button nur anzeigen, wenn es noch Features gibt
-        view_new_features.hidden = !(showPWABtn || showPushBtn);
-    
+    // Klick auf Installationsbutton
+    installBtn.addEventListener("click", async () => {
+        if (!deferredPrompt) return;
+
+        deferredPrompt.prompt(); // Installationsdialog anzeigen
+
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User wählte: ${outcome}`);
+
+        deferredPrompt = null; // Zurücksetzen
+        showPWABtn = false;
+        updateFeatureArea();
+    });
+
+    // Klick auf Push-Button
+    activatePushBtn.addEventListener("click", async () => {
+        planPush();
+        showPushBtn = false;
+        updateFeatureArea();
+    })
+
+    // NewFeatureArea Updaten
+    function updateFeatureArea() {
+        // Feature-Area anzeigen, wenn es noch Buttons gibt
+        const shouldShowArea = showPWABtn || showPushBtn;
+
+        if (!shouldShowArea) {
+            showFeatureArea = false;
+            view_new_features.hidden = true;
+        }
+        // Feature-Area wird nur angezeigt, wenn showFeatureArea true ist
+        if (showFeatureArea) {
+            new_feature_area.hidden = false;
+
+            // Buttons innerhalb der Area anzeigen/ausblenden
+            installBtn.hidden = !showPWABtn;
+            activatePushBtn.hidden = !showPushBtn;
+
+            // "View New Features" Button ausblenden
+            view_new_features.hidden = true;
+        } else {
+            // Feature-Area ausblenden
+            new_feature_area.hidden = true;
+
+            // "View New Features" Button nur anzeigen, wenn es noch Features gibt
+            view_new_features.hidden = !(showPWABtn || showPushBtn);
+        
+        }
     }
 }
 
@@ -329,19 +330,17 @@ function activateRealeaseCountdown() {
     }
 }
 
-
-updateText();
-activateRealeaseCountdown();
-updateCountdown();
-
-document.addEventListener("DOMContentLoaded", () => {
+if(document.readyState !== 'loading') { // Wenn das DOM schon geladen ist
     updateText();
     activateRealeaseCountdown();
     updateCountdown();
-});
-
-window.onload = () => {
-    updateText();
-    activateRealeaseCountdown();
-    updateCountdown();
-};
+    featureZone()
+} else {
+    // Falls das DOM noch lädt, Eventlistener hinzufügen
+    document.addEventListener('DOMContentLoaded', function () {
+        updateText();
+        activateRealeaseCountdown();
+        updateCountdown();
+        featureZone()
+    });
+}
