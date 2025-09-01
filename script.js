@@ -300,6 +300,8 @@ if (Notification.permission === "granted") {
 
 
 function updateRealeaseCountdown() {
+    // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
+
     // Get current date and time
     const now = new Date().getTime();
     
@@ -317,6 +319,7 @@ function updateRealeaseCountdown() {
 }
 
 // Function to activate/deactivate realease countdown field
+// NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 function activateRealeaseCountdown() {
     if (Date.now() > realeaseDeadline && Date.now() < realeaseDeadline + 60000) { // Between realease time and 1 minute after
         document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
@@ -332,14 +335,14 @@ function activateRealeaseCountdown() {
 
 if(document.readyState !== 'loading') { // Wenn das DOM schon geladen ist
     updateText();
-    activateRealeaseCountdown();
+    // activateRealeaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
     updateCountdown();
     featureZone()
 } else {
     // Falls das DOM noch lädt, Eventlistener hinzufügen
     document.addEventListener('DOMContentLoaded', function () {
         updateText();
-        activateRealeaseCountdown();
+        // activateRealeaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
         updateCountdown();
         featureZone()
     });
