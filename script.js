@@ -10,8 +10,8 @@
 // Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
 const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
 
-//Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
-const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
+//Aufgabenrelease Datum (Hier: 01.September 2025, 00:00 CEST)
+const releaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
 
 // wg. mobile IOS auch in index.html anpassen!
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
@@ -31,12 +31,12 @@ const timeLeftElement = document.getElementById("time-left");
 const bombVisual = document.getElementById("bomb-visual");
 const bombImage = document.getElementById("bomb-image");
 const explosionEffect = document.getElementById("explosion-effect");
-const realeaseTimeLeftElement = document.getElementById("realease_countdown");
+const releaseTimeLeftElement = document.getElementById("release_countdown");
 
 // Update the countdown every second
 const countdownTimer = setInterval(updateCountdown, 1000);
-const realeaseCountdownTimer = setInterval(updateRealeaseCountdown, 1000);
-const updateRealeaseCountdownTimer = setInterval(activateRealeaseCountdown, 1000); 
+const releaseCountdownTimer = setInterval(updateReleaseCountdown, 1000);
+const updateReleaseCountdownTimer = setInterval(activateReleaseCountdown, 1000); 
 
 // Function to update the countdown
 function updateCountdown() {
@@ -299,14 +299,14 @@ if (Notification.permission === "granted") {
 
 
 
-function updateRealeaseCountdown() {
+function updateReleaseCountdown() {
     // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 
     // Get current date and time
     const now = new Date().getTime();
     
     // Find the distance between now and the deadline
-    const distance = realeaseDeadline - now;
+    const distance = releaseDeadline - now;
     
     // Time calculations for days, hours, minutes and seconds
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -315,35 +315,35 @@ function updateRealeaseCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
     // Display the result
-    realeaseTimeLeftElement && (realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`)
+    releaseTimeLeftElement && (releaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`)
 }
 
-// Function to activate/deactivate realease countdown field
+// Function to activate/deactivate release countdown field
 // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
-function activateRealeaseCountdown() {
-    let time_to_realease = document.getElementById("time_to_realease")
-    if (Date.now() > realeaseDeadline && Date.now() < realeaseDeadline + 60000) { // Between realease time and 1 minute after
-        document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
-        clearInterval(realeaseCountdownTimer);
-    } else if (Date.now() > realeaseDeadline + 60000) { // More than 1 minute after realease
-        time_to_realease && (time_to_realease.hidden = true)
-        clearInterval(updateRealeaseCountdownTimer);
-    } else { // Before realease
-        document.getElementById("time_to_realease").hidden = false;
-        updateRealeaseCountdown()
+function activateReleaseCountdown() {
+    let time_to_release = document.getElementById("time_to_release")
+    if (Date.now() > releaseDeadline && Date.now() < releaseDeadline + 60000) { // Between release time and 1 minute after
+        document.getElementById("release_countdown").innerHTML = "AUFGABEN SIND DA!";
+        clearInterval(releaseCountdownTimer);
+    } else if (Date.now() > releaseDeadline + 60000) { // More than 1 minute after release
+        time_to_release && (time_to_release.hidden = true)
+        clearInterval(updateReleaseCountdownTimer);
+    } else { // Before release
+        document.getElementById("time_to_release").hidden = false;
+        updateReleaseCountdown()
     }
 }
 
 if(document.readyState !== 'loading') { // Wenn das DOM schon geladen ist
     updateText();
-    // activateRealeaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
+    // activateReleaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
     updateCountdown();
     featureZone()
 } else {
     // Falls das DOM noch lädt, Eventlistener hinzufügen
     document.addEventListener('DOMContentLoaded', function () {
         updateText();
-        // activateRealeaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
+        // activateReleaseCountdown(); // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
         updateCountdown();
         featureZone()
     });

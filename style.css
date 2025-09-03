@@ -327,7 +327,7 @@ a {
     transform: scale(1.1);
 }
 
-#time_to_realease {
+#time_to_release {
     text-align: center;
     background: linear-gradient(135deg, red 0%, blue
      100%);
@@ -339,11 +339,11 @@ a {
     color: white
 }
 
-.realease_content {
+.release_content {
     margin: 0.4rem 0;
 }
 
-#realease_countdown {
+#release_countdown {
     font-size: 2rem;
     font-weight: bold;
     color: white;
