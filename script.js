@@ -315,17 +315,18 @@ function updateRealeaseCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
     // Display the result
-    realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    realeaseTimeLeftElement && (realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`)
 }
 
 // Function to activate/deactivate realease countdown field
 // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 function activateRealeaseCountdown() {
+    let time_to_realease = document.getElementById("time_to_realease")
     if (Date.now() > realeaseDeadline && Date.now() < realeaseDeadline + 60000) { // Between realease time and 1 minute after
         document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
         clearInterval(realeaseCountdownTimer);
     } else if (Date.now() > realeaseDeadline + 60000) { // More than 1 minute after realease
-        document.getElementById("time_to_realease").hidden = true;
+        time_to_realease && (time_to_realease.hidden = true)
         clearInterval(updateRealeaseCountdownTimer);
     } else { // Before realease
         document.getElementById("time_to_realease").hidden = false;
