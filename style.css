@@ -350,3 +350,14 @@ a {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     margin-bottom: 0.5rem;
 }
+
+/* Dark mode feature */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, var(--bwinf-dark) 0%, #191919 100%);
+  }
+  #info-text {
+    background-color: var(--bwinf-dark);
+    color: var(--bwinf-light)
+  }
+}
