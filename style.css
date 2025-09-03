@@ -12,8 +12,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Share Tech Mono";
+    src: url("font/ShareTechMono-Regular.ttf");
+}
+
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Share Tech Mono", "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
     background: linear-gradient(135deg, var(--bwinf-light) 0%, #e0e0e0 100%);
