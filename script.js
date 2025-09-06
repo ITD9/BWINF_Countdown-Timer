@@ -325,7 +325,9 @@ function activateRealeaseCountdown() {
         document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
         clearInterval(realeaseCountdownTimer);
     } else if (Date.now() > realeaseDeadline + 60000) { // More than 1 minute after realease
-        document.getElementById("time_to_realease").hidden = true;
+        if (document.getElementById("time_to_realease") != null) { // Check if element time_to_release exsist before hiding it
+            document.getElementById("time_to_realease").hidden = true;
+        }
         clearInterval(updateRealeaseCountdownTimer);
     } else { // Before realease
         document.getElementById("time_to_realease").hidden = false;
