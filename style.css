@@ -12,8 +12,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Share Tech Mono";
+    src: url("font/ShareTechMono-Regular.ttf");
+}
+
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Share Tech Mono", "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
     background: linear-gradient(135deg, var(--bwinf-light) 0%, #e0e0e0 100%);
@@ -322,7 +327,7 @@ a {
     transform: scale(1.1);
 }
 
-#time_to_realease {
+#time_to_release {
     text-align: center;
     background: linear-gradient(135deg, red 0%, blue
      100%);
@@ -334,14 +339,25 @@ a {
     color: white
 }
 
-.realease_content {
+.release_content {
     margin: 0.4rem 0;
 }
 
-#realease_countdown {
+#release_countdown {
     font-size: 2rem;
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     margin-bottom: 0.5rem;
+}
+
+/* Dark mode feature */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, var(--bwinf-dark) 0%, #191919 100%);
+  }
+  #info-text {
+    background-color: var(--bwinf-dark);
+    color: var(--bwinf-light)
+  }
 }
