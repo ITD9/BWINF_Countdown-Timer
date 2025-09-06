@@ -315,7 +315,9 @@ function updateRealeaseCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
     // Display the result
-    realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if (realeaseTimeLeftElement != null) {
+        realeaseTimeLeftElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`
+    }
 }
 
 // Function to activate/deactivate realease countdown field
