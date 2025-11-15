@@ -260,18 +260,18 @@ a {
 }
 
 .NewFeatureBtn {
-    background-color: red;
-    border: 1px solid red;
+    background-color: rgb(112, 112, 112);
+    border: 1.5px solid rgb(0, 0, 0);
     border-radius: 20px;
     padding: 0.4rem 0.9rem;
     color: white;
-    transition: transform 0.3s ease-in-out, background-color .15s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color .15s ease-in-out;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     margin-top: 0.8rem;
 }
 
 .NewFeatureBtn:hover {
-    background-color: rgb(192, 1, 1);
+    background-color: rgb(104, 104, 104);
     transform: scale(1.03);
 }
 
@@ -279,22 +279,22 @@ a {
     position: absolute;
     top: 10px;
     right: 10px;
-    border: 1.5px solid red;
+    border: 1.5px solid rgb(0, 0, 0);
     padding-top: 0.5rem;
     padding-bottom: 0.7rem;
     padding-left: 1rem;
     padding-right: 0.8rem;
     border-radius: 5px;
-    background-color: rgba(255, 87, 87, 0.253);
+    background-color: rgba(112, 112, 112, 0.594);
     margin-left: 10px;
 }
 
 #new_features::before {
-    content: "Neu: PWA & Push";
+    content: "Einstellungen";
     position: absolute;
     top: -10px;
     left: 10px;
-    background-color: red;
+    background-color: rgb(112, 112, 112);
     color: white;
     padding: 0.1rem 0.5rem;
     font-size: 0.8rem;
@@ -306,16 +306,11 @@ a {
     position: absolute;
     top: 10px;
     right: 10px;
-    border: 1.5px solid red;
-    padding-top: 0.5rem;
-    padding-bottom: 0.7rem;
-    padding-left: 1rem;
-    padding-right: 0.8rem;
-    border-radius: 5px;
-    background-color: rgba(255, 87, 87, 0.253);
-    color: white;
-    transition: transform 0.3s ease-in-out, background-color .15s ease-in-out;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    border: none; /* avoid default button borders */
+    padding: 0; /* remove default button padding so only the icon shows */
+    z-index: 1100; /* place the icon above the settings panel */
+    transition: transform 0.2s ease-in-out, background-color .15s ease-in-out;
 }
 
 #view_new_features:hover {
