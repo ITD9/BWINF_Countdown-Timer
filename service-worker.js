@@ -14,7 +14,7 @@ self.addEventListener("install", event => {
         "/favicon.ico",
         "media/biber_standing_alpha.png",
         "https://bwinf.de/_assets/51da559d81e26dd99a16662ed6f306af/Images/Logo-BWINF-Footer.svg",
-        
+        "media/settings-icon.svg",
       ]);
     })
   );
