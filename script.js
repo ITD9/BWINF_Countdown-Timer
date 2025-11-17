@@ -8,7 +8,7 @@
 // -----------------------
 // Anpassen für neue Daten:
 // Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
-const deadline = new Date("2025-11-18T00:00:00+02:00").getTime();
+const deadline = new Date("2025-11-18T00:00:00+01:00").getTime();
 
 //Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
 const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
