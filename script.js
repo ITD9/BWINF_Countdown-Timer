@@ -35,8 +35,20 @@ const realeaseTimeLeftElement = document.getElementById("realease_countdown");
 
 // Update the countdown every second
 const countdownTimer = setInterval(updateCountdown, 1000);
-const realeaseCountdownTimer = setInterval(updateRealeaseCountdown, 1000);
-const updateRealeaseCountdownTimer = setInterval(activateRealeaseCountdown, 1000); 
+//const realeaseCountdownTimer = setInterval(updateRealeaseCountdown, 1000); NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächstem Wettbewerb
+//const updateRealeaseCountdownTimer = setInterval(activateRealeaseCountdown, 1000); NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächstem Wettbewerb
+
+//for global use
+let isPWAavailable = false;
+let showPWABtn = false;
+let showPushBtn = true;
+let showFeatureArea = false;
+
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+const new_feature_area = document.getElementById("new_features");
+const view_new_features = document.getElementById("view_new_features");
+const activatePushBtn = document.getElementById("activatePushBtn");
 
 // Function to update the countdown
 function updateCountdown() {
@@ -185,18 +197,33 @@ function createExplosionParticles() {
     }
 }
 
+
+
+function click__view_new_features() {
+    showFeatureArea = true; // Area soll jetzt angezeigt werden
+    updateFeatureArea();
+}
+
+async function click__installBtn() {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt(); // Installationsdialog anzeigen
+
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User wählte: ${outcome}`);
+    deferredPrompt = null; // Zurücksetzen
+    showPWABtn = false;
+    updateFeatureArea();
+}
+
+function click__activatePushBtn() {
+    planPush();
+    showPushBtn = false;
+    updateFeatureArea();
+}
+
 // --------- PWA abfangen & Installationsdialog ----------------
 function featureZone() {
-    let deferredPrompt;
-    const installBtn = document.getElementById("installBtn");
-    const new_feature_area = document.getElementById("new_features");
-    const view_new_features = document.getElementById("view_new_features");
-    const activatePushBtn = document.getElementById("activatePushBtn");
-
-    let isPWAavailable = false;
-    let showPWABtn = false;
-    let showPushBtn = true;
-    let showFeatureArea = false;
     updateFeatureArea();
 
     if (Notification.permission === "granted") {
@@ -204,7 +231,7 @@ function featureZone() {
         updateFeatureArea();
     }
 
-    console.log(new_feature_area, installBtn);
+
     // Abfangen, wenn die PWA installierbar ist
     window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault(); // Browser-Standard verhindern
@@ -216,63 +243,51 @@ function featureZone() {
 
     // Klick auf "Neu" Button
     view_new_features.addEventListener("click", () => {
-        showFeatureArea = true; // Area soll jetzt angezeigt werden
-        updateFeatureArea();
+        click__view_new_features()
     });
 
     // Klick auf Installationsbutton
-    installBtn.addEventListener("click", async () => {
-        if (!deferredPrompt) return;
-
-        deferredPrompt.prompt(); // Installationsdialog anzeigen
-
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User wählte: ${outcome}`);
-
-        deferredPrompt = null; // Zurücksetzen
-        showPWABtn = false;
-        updateFeatureArea();
+    installBtn.addEventListener("click", () => {
+        click__installBtn()
     });
 
     // Klick auf Push-Button
-    activatePushBtn.addEventListener("click", async () => {
-        planPush();
-        showPushBtn = false;
-        updateFeatureArea();
+    activatePushBtn.addEventListener("click", () => {
+        click__activatePushBtn()
     })
+}
 
-    // NewFeatureArea Updaten
-    function updateFeatureArea() {
-        // Feature-Area anzeigen, wenn es noch Buttons gibt
-        const shouldShowArea = showPWABtn || showPushBtn;
+// NewFeatureArea Updaten
+function updateFeatureArea() {
+    // Feature-Area anzeigen, wenn es noch Buttons gibt
+    const shouldShowArea = showPWABtn || showPushBtn;
 
-        if (!shouldShowArea) {
-            showFeatureArea = false;
-            view_new_features.hidden = true;
-        }
-        // Feature-Area wird nur angezeigt, wenn showFeatureArea true ist
-        if (showFeatureArea) {
-            new_feature_area.hidden = false;
+    if (!shouldShowArea) {
+        showFeatureArea = false;
+        view_new_features.hidden = true;
+    }
+    // Feature-Area wird nur angezeigt, wenn showFeatureArea true ist
+    if (showFeatureArea) {
+        new_feature_area.hidden = false;
 
-            // Buttons innerhalb der Area anzeigen/ausblenden
-            installBtn.hidden = !showPWABtn;
-            activatePushBtn.hidden = !showPushBtn;
+        // Buttons innerhalb der Area anzeigen/ausblenden
+        installBtn.hidden = !showPWABtn;
+        activatePushBtn.hidden = !showPushBtn;
 
-            // "View New Features" Button ausblenden
-            view_new_features.hidden = true;
-        } else {
-            // Feature-Area ausblenden
-            new_feature_area.hidden = true;
+        // "View New Features" Button ausblenden
+        view_new_features.hidden = true;
+    } else {
+        // Feature-Area ausblenden
+        new_feature_area.hidden = true;
 
-            // "View New Features" Button nur anzeigen, wenn es noch Features gibt
-            view_new_features.hidden = !(showPWABtn || showPushBtn);
-        
-        }
+        // "View New Features" Button nur anzeigen, wenn es noch Features gibt
+        view_new_features.hidden = !(showPWABtn || showPushBtn);
+    
     }
 }
 
-// ------------------ Text aktualisieren --------------------
 
+// ------------------ Text aktualisieren --------------------
 function updateText() {
     //Update hinweistext
     const hinweistext_Area = document.getElementById("hinweistext");
@@ -298,7 +313,7 @@ if (Notification.permission === "granted") {
 }
 
 
-
+/*// NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 function updateRealeaseCountdown() {
     // NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 
@@ -319,7 +334,6 @@ function updateRealeaseCountdown() {
 }
 
 // Function to activate/deactivate realease countdown field
-// NOT IN USE, da zurzeit nicht benötigt, reaktivierung bei nächster Runde
 function activateRealeaseCountdown() {
     if (Date.now() > realeaseDeadline && Date.now() < realeaseDeadline + 60000) { // Between realease time and 1 minute after
         document.getElementById("realease_countdown").innerHTML = "AUFGABEN SIND DA!";
@@ -332,6 +346,7 @@ function activateRealeaseCountdown() {
         updateRealeaseCountdown()
     }
 }
+*/
 
 if(document.readyState !== 'loading') { // Wenn das DOM schon geladen ist
     updateText();
