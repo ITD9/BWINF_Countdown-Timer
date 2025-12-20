@@ -8,22 +8,22 @@
 // -----------------------
 // Anpassen für neue Daten:
 // Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
-const deadline = new Date("2025-11-18T00:00:00+01:00").getTime();
+const deadline = new Date("2026-04-14T00:00:00+01:00").getTime();
 
 //Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
 const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
 
 // wg. mobile IOS auch in index.html anpassen!
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, 18. November 2025 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Jedoch wird eventuell die Abgabe erst später am frühen Morgen des 18. November 2025 geschlossen, <strong>MAN SOLLTE SICH NICHT DARAUF VERLASSEN!</strong> Vor zwei Jahren wurde die Abgabe zum Beispiel fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
+const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 2. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, 14. April 2026 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Gegegbenenfalls wird die Abgabe erst später am frühen Morgen des 14. November 2025 geschlossen, <strong>man sollte sich aber nicht darauf verlassen.</strong> Vor zwei Jahren wurde die Abgabe beispielsweise fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
 
 // wg. mobile IOS auch in index.html anpassen!
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = `Abgabe am Dienstag, 18. November 2025, 00:00 Uhr (CEST)`;
+const new_deadlineInfo = `Abgabe am Dienstag, 14. April 2026, 00:00 Uhr (CET)`;
 
 // wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
-const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 1 Deadline`;
+const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 2 Deadline`;
 
 //----------------------
 // DOM elements
