@@ -23,7 +23,7 @@ const new_deadlineInfo = `Abgabe am Dienstag, 14. April 2026, 00:00 Uhr (CET)`;
 
 // wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
-const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 2 Deadline`;
+const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 2`;
 
 //----------------------
 // DOM elements
