@@ -19,7 +19,7 @@ const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 2. Rund
 
 // wg. mobile IOS auch in index.html anpassen!
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = `Abgabe am Dienstag, 14. April 2026, 00:00 Uhr (CET)`;
+const new_deadlineInfo = `Abgabe am Dienstag, 14. April 2026, 00:00 Uhr (CEST)`;
 
 // wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
