@@ -97,28 +97,28 @@ function planPush() {
             {
                 time: deadline,
                 title: "Die Abgabe ist abgelaufen!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik ist jetzt geschlossen.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik ist jetzt geschlossen.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/biber_standing_alpha.png",
                 done: false
             },
             {
                 time: deadline - 86400000,
                 title: "Nur noch 24h!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in 24h.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in 24h.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             },
             {
                 time: deadline - 3600000,
                 title: "Nur noch eine Stunde!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in einer Stunde.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             },
             {
                 time: deadline - 600000,
                 title: "Nur noch 10 Minuten!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in 10 Minuten.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in 10 Minuten.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             }
