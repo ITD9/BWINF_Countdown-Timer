@@ -7,23 +7,23 @@
 
 // -----------------------
 // Anpassen für neue Daten:
-// Set the deadline date (Hier: 18.November 2025, 00:00 CEST)
-const deadline = new Date("2026-04-14T00:00:00+02:00").getTime();
+// Set the deadline date (Hier: 24.November 2026, 00:00 CEST)
+const deadline = new Date("2026-11-24T00:00:00+02:00").getTime();
 
 //Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
-const realeaseDeadline = new Date("2025-09-01T00:00:00+02:00").getTime();
+const realeaseDeadline = new Date("2026-09-01T00:00:00+02:00").getTime();
 
 // wg. mobile IOS auch in index.html anpassen!
 // Hinweitext, der auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 2. Runde des 44. Bundeswettbewerb Informatik endet offiziell Dienstag, 14. April 2026 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Gegegbenenfalls wird die Abgabe erst später am frühen Morgen des 14. April 2026 geschlossen, <strong>man sollte sich aber nicht darauf verlassen.</strong> Vor zwei Jahren wurde die Abgabe beispielsweise fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
+const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 1. Runde des 45. Bundeswettbewerb Informatik endet offiziell Dienstag, 24. November 2026 00:00 Uhr. Es steht also noch der gesamte Montag zur Verfügung, der Dienstag aber nicht.<br>Gegegbenenfalls wird die Abgabe erst später am frühen Morgen des 24. November 2026 geschlossen, <strong>man sollte sich aber nicht darauf verlassen.</strong> Vor zwei Jahren wurde die Abgabe beispielsweise fast pünktlich um Mitternacht geschlossen!<br>Lösungen können unter <a href="https://login.bwinf.de/" target="_blank">https://login.bwinf.de/</a> als ZIP-Archiv eingereicht werden.</p>`
 
 // wg. mobile IOS auch in index.html anpassen!
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = `Abgabe am Dienstag, 14. April 2026, 00:00 Uhr (CEST)`;
+const new_deadlineInfo = `Abgabe am Dienstag, 24. November 2026, 00:00 Uhr (CEST)`;
 
 // wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
-const new_Ueberschrift = `44. Bundeswettbewerb Informatik - Runde 2`;
+const new_Ueberschrift = `45. Bundeswettbewerb Informatik - Runde 1`;
 
 //----------------------
 // DOM elements
@@ -97,28 +97,28 @@ function planPush() {
             {
                 time: deadline,
                 title: "Die Abgabe ist abgelaufen!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik ist jetzt geschlossen.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik ist jetzt geschlossen.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/biber_standing_alpha.png",
                 done: false
             },
             {
                 time: deadline - 86400000,
                 title: "Nur noch 24h!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in 24h.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in 24h.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             },
             {
                 time: deadline - 3600000,
                 title: "Nur noch eine Stunde!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in einer Stunde.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in einer Stunde.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             },
             {
                 time: deadline - 600000,
                 title: "Nur noch 10 Minuten!",
-                body: "Die Abgabe für die 2. Runde des 44. Bundeswettbewerb Informatik schließt in 10 Minuten.",
+                body: "Die Abgabe für die 1. Runde des 45. Bundeswettbewerb Informatik schließt in 10 Minuten.",
                 icon: "https://itd9.github.io/BWINF_Countdown-Timer/media/bomb1_512-512.png",
                 done: false
             }
