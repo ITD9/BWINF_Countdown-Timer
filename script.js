@@ -8,7 +8,7 @@
 // -----------------------
 // Anpassen für neue Daten:
 // Set the deadline date (Hier: 24.November 2026, 00:00 CEST)
-const deadline = new Date("2026-11-24T00:00:00+02:00").getTime();
+const deadline = new Date("2026-11-24T00:00:00+01:00").getTime();
 
 //Aufgabenrealease Datum (Hier: 01.September 2025, 00:00 CEST)
 const realeaseDeadline = new Date("2026-09-01T00:00:00+02:00").getTime();
@@ -19,7 +19,7 @@ const new_hinweistext = `Guten Tag,<br>der Bearbeitungszeitraum für die 1. Rund
 
 // wg. mobile IOS auch in index.html anpassen!
 //Deadline Info, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert. HTML Tags sind erlaubt.
-const new_deadlineInfo = `Abgabe am Dienstag, 24. November 2026, 00:00 Uhr (CEST)`;
+const new_deadlineInfo = `Abgabe am Dienstag, 24. November 2026, 00:00 Uhr (CET)`;
 
 // wg. mobile IOS auch in index.html anpassen!
 // Überschrift, die auf der Seite angezeigt wird. Wird mit updateText() aktualisiert.
